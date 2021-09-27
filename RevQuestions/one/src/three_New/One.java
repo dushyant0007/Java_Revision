@@ -22,8 +22,8 @@ public class One {
 
     // ---------------------==================------------------------====================-----------------=================-------------
 
+    // https://leetcode.com/problems/single-number/submissions/
     // There is an array where every number is appearing twice accept one number , find that one number
-
     //  int arr [] = {2,3,3,4,2,6,4};
 
     public static int ans1(int arr[]) {
@@ -187,14 +187,78 @@ public class One {
     }
 
 
+    // ---------------------==================------------------------====================-----------------=================-------------
+
+    // finding prime number between 0 and 40
+
+//    public static void main(String[] args) {
+//
+//       int n = 40 ;
+//    boolean [] primes = new boolean [ n + 1 ] ;
+    //  //   The default values in the array are false
+//   inBwPrime(n , primes);
+//
+//    }
+
+    //  // false in array means is prime
+    public static void inBwPrime(int n, boolean[] primes) {
+
+        for (int i = 2; i * i <= n; i++) {
+            if (!primes[i]) {
+                for (int j = i * 2; j <= n; i++) {
+                    primes[j] = true;
+                }
+            }
+        }
+        for (int i = 2; i * i <= n; i++) {
+            if (!primes[i]) {
+                System.out.println(primes[i]);
+            }
+        }
+
+    }
+
+
 
     // ---------------------==================------------------------====================-----------------=================-------------
 
+    //   Finding SquareRoot of a number
 
+    public static double squareRoot( int target, int p) {
 
+        int start = 1;
+        int end = target - 1;
+        // RAns == round off answer
+        double RAns = 0;
 
+        while (start <= end) {
 
+            int mid = start + (end - start) / 2;
+            RAns = mid;
+            if (mid * mid == target){return mid;}
+            if (mid * mid > target) {
+                end = mid - 1;
+            } else start = mid + 1;
 
+        }
+
+        System.out.println(RAns);
+
+        double increment = 0.1;
+        for ( int i = 0; i < p; i++) {
+
+            while (RAns * RAns <= target) {
+                RAns = RAns + increment;
+            }
+            RAns = RAns - increment ;
+            increment /= 10 ;
+
+        }
+
+        return RAns;
+    }
+
+    // ---------------------==================------------------------====================-----------------=================-------------
 
 
 
